@@ -34,8 +34,17 @@
     animation-delay: 0.4s;
 }
 
-.blNavLink {
+.blNavLink a {
     font-size: large;
     font-weight: 100;
     margin-top: 5px;
+    color: #333333;
+}
+
+.blNavLink :hover {
+    font-size: large;
+    font-weight: 600;
+    margin-top: 5px;
+    color: #333333;
+    text-decoration: none;
 }

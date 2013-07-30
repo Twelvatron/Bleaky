@@ -12,18 +12,18 @@
 <body>
     <div class="container-fluid">
         <div class="row-fluid">
-            <div class="span2">
+            <div class="col-lg-2">
                 <div class="page-header">
                     <h3><a class="blHeaderText" href="/">Bleaky</a></h3>
                 </div>
                 <div class="blNavbar">
                     <ul>
-                        <li class="fade-in one blNavLink">Home</li>
-                        <li class="fade-in two blNavLink">Log In</li>
+                        <li class="fade-in one blNavLink"><a href="/">Home</a></li>
+                        <li class="fade-in two blNavLink"><a href="/Login">Log In</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="span10">
+            <div class="col-lg-10">
                 @RenderBody()
             </div>
         </div>
