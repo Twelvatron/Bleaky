@@ -48,3 +48,11 @@
     color: #333333;
     text-decoration: none;
 }
+
+div .blPageHeader {
+    border-bottom: 1px solid #929292;
+}
+
+.blLogin {
+    border-bottom: 1px solid #929292;
+}
