@@ -1,36 +1,13 @@
-﻿.blNavbar ul {
+﻿.blHeaderText { color: #333333; }
+.blHeaderText:hover { color: #333333; text-decoration: none}
+
+.blNavbar ul {
     list-style-type: none;
 }
 
-@-webkit-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@-moz-keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
+@-webkit-keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
+@-moz-keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
+@keyframes fadeIn {from {opacity: 0;} to {opacity: 1;}}
 
 .fade-in {
     opacity: 0;
@@ -45,17 +22,17 @@
     animation-duration: 1s;
 }
 
-    .fade-in.one {
-        -webkit-animation-delay: 0.2s;
-        -moz-animation-delay: 0.2s;
-        animation-delay: 0.2s;
-    }
+.fade-in.one {
+    -webkit-animation-delay: 0.2s;
+    -moz-animation-delay: 0.2s;
+    animation-delay: 0.2s;
+}
 
-    .fade-in.two {
-        -webkit-animation-delay: 0.4s;
-        -moz-animation-delay: 0.4s;
-        animation-delay: 0.4s;
-    }
+.fade-in.two {
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+    animation-delay: 0.4s;
+}
 
 .blNavLink {
     font-size: large;
