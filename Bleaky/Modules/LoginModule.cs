@@ -15,6 +15,7 @@ namespace Bleaky.Modules
 
         dynamic Login(dynamic parameters)
         {
+            return PartialView();
             return View["/Index.cshtml"];
         }
     }
