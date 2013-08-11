@@ -10,20 +10,16 @@
     <script src="Content/Bootstrap/js/bootstrap.js"></script>
 </head>
 <body>
+    <div class="navbar navbar-fixed-top navbar-inverse">
+        <a class="navbar-brand" href="/">Bleaky</a>
+        <ul class="nav navbar-nav">
+            <li><a href="/">Home</a></li>
+            <li><a href="/Login">Login</a></li>
+        </ul>
+    </div>
     <div class="container-fluid">
         <div class="row-fluid">
-            <div class="col-lg-2">
-                <div class="blPageHeader page-header">
-                    <h1><a class="blHeaderText" href="/">Bleaky</a></h1>
-                </div>
-                <div class="blNavbar">
-                    <ul>
-                        <li class="fade-in one blNavLink"><a href="/">Home</a></li>
-                        <li class="fade-in two blNavLink"><a href="/Login">Log In</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-10 fade-in one">
+            <div class="fade-in one">
                 @RenderBody()
             </div>
         </div>

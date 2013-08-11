@@ -1,10 +1,33 @@
 ﻿body {
     background-image: url(/Content/Bleaky/Images/background.jpg);
     background-repeat:no-repeat;
+    background-size: 100%;
+    padding-top: 60px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
 }
 
-.blHeaderText { color: #333333; }
-.blHeaderText:hover { color: #333333; text-decoration: none}
+.blHomePageDiv span {
+    color: #FFFFFF;
+    background-color:rgba(0, 0, 0, 0.8);
+}
+
+.blLoginDiv {
+    color: #FFFFFF;
+    background-color:rgba(0, 0, 0, 0.6);
+    padding: 20px;
+}
+
+.blHeaderText { 
+    color: #FFFFFF;
+    background-color:rgba(0, 0, 0, 0.8);
+}
+.blHeaderText:hover { 
+    color: #FFFFFF; 
+    background-color:rgba(0, 0, 0, 0.8);
+    text-decoration: none
+}
 
 .blNavbar ul {
     list-style-type: none;
