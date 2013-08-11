@@ -1,7 +1,7 @@
 ﻿body {
     background-image: url(/Content/Bleaky/Images/background.jpg);
     background-repeat:no-repeat;
-    background-size: 100%;
+    background-size: cover;
     padding-top: 60px;
     padding-left: 10px;
     padding-right: 10px;
