@@ -24,6 +24,7 @@ footer {
 .blHomePageDiv span {
     color: #FFFFFF;
     background-color:rgba(0, 0, 0, 0.8);
+    line-height: 23px;
 }
 
 .blLoginDiv {
