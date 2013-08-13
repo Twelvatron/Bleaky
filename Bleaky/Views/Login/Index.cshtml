@@ -20,7 +20,7 @@
                         Remember me
                     </label>
                 </div>
-                <button type="submit" class="btn btn-small btn-default">Sign in</button>
+                <button type="submit" class="btn btn-medium btn-default">Sign in</button>
             </div>
         </div>
     </form>
@@ -45,7 +45,8 @@
             <div class="col-lg-5">
                 <input type="password" class="form-control input-small" id="inputConfirmPassword" ng-model="inputConfirmPassword" placeholder="Confirm password">
                 <br />
-                <button type="submit" class="btn btn-small btn-default" ng-click="verifyRegistration()">Sign up for Bleaky</button>
+                <div class="alert alert-danger" ng-show="hasError">{{errorMessage}}</div>
+                <button type="submit" class="btn btn-medium btn-primary" ng-click="verifyRegistration()">Sign up for Bleaky</button>
             </div>
         </div>
     </form>
