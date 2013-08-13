@@ -134,6 +134,7 @@
     <Content Include="Content\Bootstrap\js\bootstrap.js" />
     <Content Include="Content\Bootstrap\js\bootstrap.min.js" />
     <Content Include="Content\Bleaky\Site.css" />
+    <Content Include="Scripts\Login\LoginCtrl.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
