@@ -1,6 +1,6 @@
-﻿var BleakyApp = angular.module('BleakyApp', []);
+﻿var BleakyApp = angular.module('BleakyApp');
 
-BleakyApp.controller('LoginCtrl', function ($scope) {
+BleakyApp.controller('LoginCtrl', function ($scope, _login) {
     $scope.verifyRegistration = function () {
         $scope.hasError = false;
 
@@ -15,6 +15,8 @@ BleakyApp.controller('LoginCtrl', function ($scope) {
             $scope.errorMessage = 'The passwords you entered differ, please try again.';
             return;
         }
+        
+        _login.register($scope.inputEmail, $scope.inputPassword);
     };
 
     $scope.isValidEmail = function (email) {
