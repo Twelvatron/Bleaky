@@ -1,6 +1,6 @@
 ﻿var BleakyApp = angular.module('BleakyApp');
 
-BleakyApp.controller('LoginCtrl', function ($scope, _login) {
+BleakyApp.controller('LoginCtrl', function ($scope, $window, _login) {
     $scope.verifyRegistration = function () {
         $scope.hasError = false;
 
@@ -15,10 +15,18 @@ BleakyApp.controller('LoginCtrl', function ($scope, _login) {
             $scope.errorMessage = 'The passwords you entered differ, please try again.';
             return;
         }
-        
-        console.log($scope.inputEmail);
-        console.log('here');
-        _login.register($scope.inputEmail, $scope.inputPassword);
+
+        console.log(_login.register);
+        _login.register($scope.inputEmail, $scope.inputPassword).success(function (result) {
+            if (result.Success == false) {
+                $scope.hasError = true;
+                $scope.errorMessage = result.Message;
+            }
+            else {
+                $window.location.href = 'http://www.google.co.uk';
+            }
+        }).error(function () {
+        });
     };
 
     $scope.isValidEmail = function (email) {

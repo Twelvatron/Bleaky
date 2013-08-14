@@ -6,12 +6,14 @@ using System.Configuration;
 using Bleaky.Domain;
 using Bleaky.Data;
 using MongoDB.Driver;
+using MongoDB.Driver.Builders;
+using MongoDB.Bson;
 
 namespace Bleaky.Tasks
 {
     public interface ILoginTasks
     {
-        bool RegisterUser(NewUser newUser);
+        Tuple<bool, string> RegisterUser(NewUser newUser);
     }
 
     public class LoginTasks : ILoginTasks
@@ -23,16 +25,19 @@ namespace Bleaky.Tasks
             _database = database.GetDatabase();
         }
 
-        public bool RegisterUser(NewUser newUser)
+        public Tuple<bool, string> RegisterUser(NewUser newUser)
         {
-            var user = newUser;
             var collection = _database.GetCollection<User>("Users");
+            var query = Query.EQ("Email", newUser.Email);
+            var result = collection.Find(query);
 
-            collection.Insert(new User { Name = newUser.Email, Email = newUser.Email, Password = newUser.Password });
-            collection.Drop();
-            var users = collection.FindAll();
+            if (result.Size() > 0)
+            {
+                return new Tuple<bool, string>(false, "A user with that email address already exists, please try using a different email address");
+            }
 
-            return true;
+            collection.Insert(new User { Name = Guid.NewGuid().ToString(), Email = newUser.Email, Password = newUser.Password });
+            return new Tuple<bool,string>(true, "User successfully created");
         }
     }
 }

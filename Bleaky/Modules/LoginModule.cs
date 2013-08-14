@@ -28,10 +28,9 @@ namespace Bleaky.Modules
 
         dynamic Register(dynamic parameters)
         {
-            var registerUser = this.Bind<NewUser>();
-
-            var result = _loginTasks.RegisterUser(registerUser);
-            return Response.AsJson(result);            
+            var newUser = this.Bind<NewUser>();
+            var result = _loginTasks.RegisterUser(newUser);
+            return Response.AsJson( new {Success = result.Item1, Message = result.Item2});            
         }
     }
 }
