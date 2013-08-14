@@ -11,11 +11,14 @@ namespace Bleaky.Modules
 {
     public class LoginModule : NancyModule
     {
-        public LoginModule() : base("/Login")
+        readonly ILoginTasks _loginTasks;
+
+        public LoginModule(ILoginTasks loginTasks) : base("/Login")
         {
+            _loginTasks = loginTasks;
+
             Get["/"] = Login;
             Post["/Register"] = Register;
-            Get["/Test"] = Test;
         }
 
         dynamic Login(dynamic parameters)
@@ -26,14 +29,9 @@ namespace Bleaky.Modules
         dynamic Register(dynamic parameters)
         {
             var registerUser = this.Bind<NewUser>();
-            return "Hello";
-        }
 
-        dynamic Test(dynamic parameters)
-        {
-            var tasks = new LoginTasks();
-            var result = tasks.showConfig();
-            return result;
+            var result = _loginTasks.RegisterUser(registerUser);
+            return Response.AsJson(result);            
         }
     }
 }

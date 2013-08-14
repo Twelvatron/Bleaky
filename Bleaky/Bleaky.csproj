@@ -129,8 +129,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
-    <Compile Include="Data\BleakyDatabase.cs" />
+    <Compile Include="Data\IBleakyDatabase.cs" />
     <Compile Include="Domain\NewUser.cs" />
+    <Compile Include="Domain\User.cs" />
     <Compile Include="Modules\LoginModule.cs" />
     <Compile Include="Modules\HomeModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

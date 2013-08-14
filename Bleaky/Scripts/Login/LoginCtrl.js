@@ -16,6 +16,8 @@ BleakyApp.controller('LoginCtrl', function ($scope, _login) {
             return;
         }
         
+        console.log($scope.inputEmail);
+        console.log('here');
         _login.register($scope.inputEmail, $scope.inputPassword);
     };
 
