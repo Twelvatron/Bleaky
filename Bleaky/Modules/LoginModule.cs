@@ -4,7 +4,8 @@ using System.Linq;
 using System.Web;
 using Nancy;
 using Nancy.ModelBinding;
-using Bleaky.Models;
+using Bleaky.Domain;
+using Bleaky.Tasks;
 
 namespace Bleaky.Modules
 {
@@ -14,6 +15,7 @@ namespace Bleaky.Modules
         {
             Get["/"] = Login;
             Post["/Register"] = Register;
+            Get["/Test"] = Test;
         }
 
         dynamic Login(dynamic parameters)
@@ -23,8 +25,15 @@ namespace Bleaky.Modules
 
         dynamic Register(dynamic parameters)
         {
-            var registerUser = this.Bind<RegisterUser>();
+            var registerUser = this.Bind<NewUser>();
             return "Hello";
+        }
+
+        dynamic Test(dynamic parameters)
+        {
+            var tasks = new LoginTasks();
+            var result = tasks.showConfig();
+            return result;
         }
     }
 }
