@@ -3,7 +3,7 @@
 BleakyApp.factory('_login', function ($http) {
     return {
         register: function(email, password) {
-            return $http.post('/Login/Register', { Email: email, Password: password });
+            return $http.post('/login/register', { Email: email, Password: password });
         }
     };
 });

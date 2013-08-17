@@ -10,6 +10,12 @@ BleakyApp.controller('LoginCtrl', function ($scope, $window, _login) {
             return;
         }
 
+        if ($scope.inputPassword.length < 7) {
+            $scope.hasError = true;
+            $scope.errorMessage = 'Please enter a password that is longer than 6 characters';
+            return;
+        }
+
         if ($scope.inputPassword != $scope.inputConfirmPassword) {
             $scope.hasError = true;
             $scope.errorMessage = 'The passwords you entered differ, please try again.';
@@ -23,7 +29,7 @@ BleakyApp.controller('LoginCtrl', function ($scope, $window, _login) {
                 $scope.errorMessage = result.Message;
             }
             else {
-                $window.location.href = 'http://www.google.co.uk';
+                $window.location.href = '/workouts';
             }
         }).error(function () {
         });
