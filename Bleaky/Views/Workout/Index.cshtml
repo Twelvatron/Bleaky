@@ -4,7 +4,21 @@
 @{
     Layout = "Shared/_Layout.cshtml";
 }
-<div class="blWorkoutDiv">
-    Welcome to <strong>your</strong> workouts @Model.Email, to get started click
+<div class="blWorkoutDiv" ng-controller="WorkoutCtrl">
+    Welcome to <strong>your</strong> workouts @Model.Email, to get started press the "Add Workout" button below.
+    <br />
+    <br />
     <a class="btn btn-mediun btn-success" href="#" ng-click="AddWorkout()">Add Workout</a>
+    <div ng-show="showAddWorkout" class="blAddWorkoutDiv">
+        Please enter a name for your workout:
+        <br /><br />
+        <form class="form-horizontal">
+            <div class="form-group">
+                <label for="inputWorkoutName" class="col-lg-2 control-label">Workout Name:</label>
+                <div class="col-lg-5">
+                    <input type="password" class="form-control input-small" id="inputWorkoutName" ng-model="inputWorkoutName" placeholder="Workout Name"
+                </div>
+            </div>
+        </form>
+    </div>
 </div>

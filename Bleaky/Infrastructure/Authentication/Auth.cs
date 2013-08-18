@@ -71,7 +71,7 @@ namespace Bleaky.Infrastructure.Authentication
 
         static INancyCookie BuildLogoutCookie()
         {
-            return new NancyCookie("_bleaktAuth", string.Empty, true) { Expires = DateTime.Now.AddDays(-1) };
+            return new NancyCookie("_bleakyAuth", string.Empty, true) { Expires = DateTime.Now.AddDays(-1) };
         }
 
         static Guid GetAuthenticatedUserFromCookie(NancyContext context)

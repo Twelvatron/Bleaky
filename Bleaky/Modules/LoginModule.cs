@@ -19,6 +19,7 @@ namespace Bleaky.Modules
             _loginTasks = loginTasks;
 
             Get["/"] = LoginHome;
+            Get["/logout"] = Logout;
             Post["/"] = Login;
             Post["/register"] = Register;
         }
@@ -26,6 +27,11 @@ namespace Bleaky.Modules
         dynamic LoginHome(dynamic parameters)
         {
             return View["/Index.cshtml"];
+        }
+
+        dynamic Logout(dynamic parameters)
+        {
+            return this.LougoutAndRedirect();
         }
 
         dynamic Login(dynamic parameters)

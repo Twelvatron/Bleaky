@@ -155,6 +155,7 @@
     <Content Include="Scripts\BleakyApp.js" />
     <Content Include="Scripts\Login\LoginCtrl.js" />
     <Content Include="Scripts\Login\LoginSvc.js" />
+    <Content Include="Scripts\Workout\WorkoutCtrl.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

@@ -1,4 +1,22 @@
-﻿<!DOCTYPE html>
+﻿@helper NavClass(string location)
+{      
+    var path = Url.RenderContext.Context.Request.Url.Path;
+    if (string.IsNullOrEmpty(location))
+    {
+        if (path == "/")
+        {
+            <text>class="active"</text>
+        }
+    }
+    else
+    {
+        if (path.StartsWith("/" + location))
+        {
+            <text>class="active"</text>
+        }
+    }    
+}
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" ng-app="BleakyApp">
 <head>
     <title>Bleaky</title>
@@ -11,6 +29,7 @@
     <script src="/Scripts/BleakyApp.js"></script>
     <script src="/Scripts/Login/LoginSvc.js"></script>
     <script src="/Scripts/Login/LoginCtrl.js"></script>
+    <script src="/Scripts/Workout/WorkoutCtrl.js"></script>
 </head>
 <body class="blBody">
     <div class="navbar navbar-fixed-top navbar-inverse">
@@ -23,9 +42,16 @@
             <a class="navbar-brand" href="/">Bleaky</a>
             <div class="nav-collapse collapse navbar-responsive-collapse">
                 <ul class="nav navbar-nav">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/workout">Workout</a></li>
-                    <li><a href="/login">Login</a></li>
+                    <li @NavClass("")><a href="/">Home</a></li>
+                    <li @NavClass("workout")><a href="/workout">Workout</a></li>
+                    @if (Html.RenderContext.Context.CurrentUser != null)
+                    {
+                        <li><a href="/login/logout">Log Out</a></li>
+                    }
+                    else
+                    {
+                        <li @NavClass("login")><a href="/login">Log In</a></li>
+                    }                    
                 </ul>
             </div>
         </div>
