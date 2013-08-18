@@ -33,6 +33,12 @@ footer {
     padding: 20px;
 }
 
+.blWorkoutDiv {
+    color: #FFFFFF;
+    background-color:rgba(0, 0, 0, 0.6);
+    padding: 20px;
+}
+
 .blHeaderText { 
     color: #FFFFFF;
     background-color:rgba(0, 0, 0, 0.8);

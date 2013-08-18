@@ -8,6 +8,8 @@ using Bleaky.Data;
 using MongoDB.Driver;
 using MongoDB.Driver.Builders;
 using MongoDB.Bson;
+using Bleaky.Infrastructure.Authentication;
+using Nancy.Security;
 
 namespace Bleaky.Tasks
 {
@@ -17,7 +19,7 @@ namespace Bleaky.Tasks
         Tuple<bool, string> RegisterUser(NewUser newUser);
     }
 
-    public class LoginTasks : ILoginTasks
+    public class LoginTasks : ILoginTasks, IUserMapper
     {
         readonly MongoDatabase _database;
         readonly IPasswordTasks _passwordTasks;
@@ -40,9 +42,19 @@ namespace Bleaky.Tasks
             }
 
             var hashedPassword = _passwordTasks.CreateHash(newUser.Password);
+            var userId = Guid.NewGuid();
 
-            collection.Insert(new User { Name = Guid.NewGuid().ToString(), Email = newUser.Email, Password = hashedPassword });
-            return new Tuple<bool,string>(true, "User successfully created");
+            collection.Insert(new User 
+                {
+                  Name = userId.ToString(),
+                  Email = newUser.Email, 
+                  Password = hashedPassword, 
+                  UserId = userId, 
+                  UserType = UserType.User, 
+                  UserName = newUser.Email
+                });
+
+            return new Tuple<bool, string>(true, userId.ToString());
         }
 
         public Tuple<bool, string> LoginUser(NewUser newUser)
@@ -51,7 +63,7 @@ namespace Bleaky.Tasks
             var query = Query.EQ("Email", newUser.Email);
             var user = collection.FindOne(query);
 
-            if (user != null)
+            if (user == null)
             {
                 return new Tuple<bool, string>(false, "Invalid username or password");
             }
@@ -62,7 +74,16 @@ namespace Bleaky.Tasks
             {
                 return new Tuple<bool, string>(false, "Invalid username or password");
             }
-            return new Tuple<bool, string>(true, "User successfully logged in");
+            return new Tuple<bool, string>(true, user.UserId.ToString());
+        }
+
+        public IUserIdentity GetUserIdentityFromIdentifier(Guid userId)
+        {
+            var collection = _database.GetCollection<User>("Users");
+            var query = Query.EQ("UserId", userId);
+            var user = collection.FindOne(query);
+
+            return user == null ? null : user;
         }
     }
 }

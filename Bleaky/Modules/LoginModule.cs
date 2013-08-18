@@ -6,6 +6,7 @@ using Nancy;
 using Nancy.ModelBinding;
 using Bleaky.Domain;
 using Bleaky.Tasks;
+using Bleaky.Infrastructure.Authentication;
 
 namespace Bleaky.Modules
 {
@@ -31,6 +32,12 @@ namespace Bleaky.Modules
         {
             var newUser = this.Bind<NewUser>();
             var result = _loginTasks.LoginUser(newUser);
+            if (result.Item1)
+            {
+                Guid userId;
+                Guid.TryParse(result.Item2, out userId);
+                return this.LoginAndRedirect(userId, DateTime.Now.AddDays(1));
+            }
             return Response.AsJson( new { Success = result.Item1, Message = result.Item2 });
         }
 
@@ -38,6 +45,13 @@ namespace Bleaky.Modules
         {
             var newUser = this.Bind<NewUser>();
             var result = _loginTasks.RegisterUser(newUser);
+            if (result.Item1)
+            {
+                Guid userId;
+                Guid.TryParse(result.Item2, out userId);
+                return this.LoginAndRedirect(userId, DateTime.Now.AddDays(1));
+            }
+
             return Response.AsJson( new {Success = result.Item1, Message = result.Item2});            
         }
     }

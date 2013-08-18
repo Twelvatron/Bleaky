@@ -1,0 +1,10 @@
+﻿@using Nancy
+@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Bleaky.Domain.User>
+
+@{
+    Layout = "Shared/_Layout.cshtml";
+}
+<div class="blWorkoutDiv">
+    Welcome to <strong>your</strong> workouts @Model.Email, to get started click
+    <a class="btn btn-mediun btn-success" href="#" ng-click="AddWorkout()">Add Workout</a>
+</div>

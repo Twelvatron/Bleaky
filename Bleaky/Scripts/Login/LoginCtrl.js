@@ -22,16 +22,30 @@ BleakyApp.controller('LoginCtrl', function ($scope, $window, _login) {
             return;
         }
 
-        console.log(_login.register);
         _login.register($scope.inputEmail, $scope.inputPassword).success(function (result) {
             if (result.Success == false) {
                 $scope.hasError = true;
                 $scope.errorMessage = result.Message;
             }
             else {
-                $window.location.href = '/workouts';
+                $window.location.href = '/workout';
             }
         }).error(function () {
+        });
+    };
+
+    $scope.signIn = function () {
+        $scope.hasLoginError = false;
+
+        _login.logIn($scope.loginEmail, $scope.loginPassword).success(function(result) {
+            if (result.Success == false) {
+                $scope.hasLoginError = true;
+                $scope.loginErrorMessage = result.Message;
+            }
+            else {
+                $window.location.href = '/workout';
+            }
+        }).error(function() {
         });
     };
 
