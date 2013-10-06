@@ -11,14 +11,23 @@
     <a class="btn btn-mediun btn-success" href="#" ng-click="AddWorkout()">Add Workout</a>
     <div ng-show="showAddWorkout" class="blAddWorkoutDiv">
         Please enter a name for your workout:
-        <br /><br />
+        <br />
+        <br />
         <form class="form-horizontal">
             <div class="form-group">
-                <label for="inputWorkoutName" class="col-lg-2 control-label">Workout Name:</label>
-                <div class="col-lg-5">
-                    <input type="password" class="form-control input-small" id="inputWorkoutName" ng-model="inputWorkoutName" placeholder="Workout Name"
+                <label for="inputWorkoutName" class="col-lg-3 control-label">Workout Name:</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control input-small" id="inputWorkoutName" ng-model="inputWorkoutName" placeholder="Workout Name">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputWorkoutFrequency" class="col-lg-3 control-label">Frequency (Days per week):</label>
+                <div class="col-lg-4">
+                    <input type="text" class="form-control input-small" id="inputWorkoutFrequency" ng-model="inputWorkoutFrequency" placeholder="Frequency">
                 </div>
             </div>
         </form>
+        <button class="btn btn-primary pull-right">Next</button>
+        <br /><br />
     </div>
 </div>
