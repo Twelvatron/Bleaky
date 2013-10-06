@@ -37,10 +37,19 @@ footer {
     color: #FFFFFF;
     background-color:rgba(0, 0, 0, 0.6);
     padding: 20px;
+    margin-bottom: 20px;
 }
 
 .blAddWorkoutDiv {
-    margin-top:20px;
+    color: #FFFFFF;
+    background-color:rgba(0, 0, 0, 0.6);
+    padding: 20px;
+}
+
+.blAddDaysDiv {
+    color: #FFFFFF;
+    background-color:rgba(0, 0, 0, 0.6);
+    padding: 20px;
 }
 
 .blHeaderText { 

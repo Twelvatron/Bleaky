@@ -4,30 +4,44 @@
 @{
     Layout = "Shared/_Layout.cshtml";
 }
-<div class="blWorkoutDiv" ng-controller="WorkoutCtrl">
-    Welcome to <strong>your</strong> workouts @Model.Email, to get started press the "Add Workout" button below.
-    <br />
-    <br />
-    <a class="btn btn-mediun btn-success" href="#" ng-click="AddWorkout()">Add Workout</a>
-    <div ng-show="showAddWorkout" class="blAddWorkoutDiv">
-        Please enter a name for your workout:
+<div ng-controller="WorkoutCtrl">
+    <div class="blWorkoutDiv">
+        Welcome to <strong>your</strong> workouts @Model.Email, to get started press the "Add Workout" button below.
         <br />
         <br />
-        <form class="form-horizontal">
-            <div class="form-group">
-                <label for="inputWorkoutName" class="col-lg-3 control-label">Workout Name:</label>
-                <div class="col-lg-4">
-                    <input type="text" class="form-control input-small" id="inputWorkoutName" ng-model="inputWorkoutName" placeholder="Workout Name">
+        <a class="btn btn-mediun btn-success" href="#" ng-click="AddWorkout()">Add Workout</a>
+    </div>
+    <div id="blAddWorkoutWiz" style="display: none">
+        <div class="blAddWorkoutDiv">
+            Please enter a name for your workout:
+        <br />
+            <br />
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputWorkoutName" class="col-lg-3 control-label">Workout Name:</label>
+                    <div class="col-lg-4">
+                        <input type="text" class="form-control input-small" id="inputWorkoutName" ng-model="inputWorkoutName" placeholder="Workout Name">
+                    </div>
                 </div>
-            </div>
-            <div class="form-group">
-                <label for="inputWorkoutFrequency" class="col-lg-3 control-label">Frequency (Days per week):</label>
-                <div class="col-lg-4">
-                    <input type="text" class="form-control input-small" id="inputWorkoutFrequency" ng-model="inputWorkoutFrequency" placeholder="Frequency">
+                <div class="form-group">
+                    <label for="inputWorkoutFrequency" class="col-lg-3 control-label">Frequency (Days per week):</label>
+                    <div class="col-lg-4">
+                        <select class="form-control" id="inputWorkoutFrequency" ng-model="inputWorkoutFrequency" ng-options="n for n in days"></select>
+                    </div>
                 </div>
-            </div>
-        </form>
-        <button class="btn btn-primary pull-right">Next</button>
-        <br /><br />
+            </form>
+            <button class="btn btn-primary pull-right" style="width: 200px;" ng-click="AddDays()">Next</button>
+            <br />
+            <br />
+        </div>
+        <div class="blAddDaysDiv" style="display: none">
+            <strong>{{inputWorkoutName}}</strong> : Please select the muscle groups you will work on day:
+            <br />
+            <br />
+            <object data="Content/Bleaky/Images/muscles.svg" type="image/svg+xml"></object>
+            <button class="btn btn-primary pull-right" style="width: 200px;" ng-click="AddDays()">Next</button>
+            <br />
+            <br />
+        </div>
     </div>
 </div>

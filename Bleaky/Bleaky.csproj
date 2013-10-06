@@ -147,6 +147,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Bleaky\Images\background.jpg" />
+    <Content Include="Content\Bleaky\Images\muscles.svg" />
     <Content Include="Content\Bootstrap\css\bootstrap.css" />
     <Content Include="Content\Bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\Bootstrap\js\bootstrap.js" />
