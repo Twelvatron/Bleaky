@@ -1,9 +1,18 @@
 ﻿@using Nancy
+@using Bleaky.Domain.Enum;
 @inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<Bleaky.Domain.User>
 
 @{
     Layout = "Shared/_Layout.cshtml";
 }
+@{    
+    var type = typeof(MuscleGroups);
+    var values = Enum.GetValues(type).Cast<MuscleGroups>();
+    var dict = values.ToDictionary(e => e.ToString(), e => Convert.ToInt32(e));
+    var json = new Nancy.Json.JavaScriptSerializer().Serialize(dict);
+    var script = string.Format("{0}={1};", type.Name, json);
+}
+<code>@script</code>
 <div ng-controller="WorkoutCtrl">
     <div class="blWorkoutDiv">
         Welcome to <strong>your</strong> workouts @Model.Email, to get started press the "Add Workout" button below.
@@ -38,7 +47,12 @@
             <strong>{{inputWorkoutName}}</strong> : Please select the muscle groups you will work on day:
             <br />
             <br />
-            <object data="Content/Bleaky/Images/muscles.svg" type="image/svg+xml"></object>
+            <div style="background-color: rgba(0, 0, 0, 0.8)">
+                <img src="/Content/Bleaky/Images/musclesFrontBlue.png" />
+                <img src="/Content/Bleaky/Images/musclesBackBlue.png" />
+            </div>
+            <br />
+            <br />
             <button class="btn btn-primary pull-right" style="width: 200px;" ng-click="AddDays()">Next</button>
             <br />
             <br />

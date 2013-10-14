@@ -133,6 +133,7 @@
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
     <Compile Include="Data\IBleakyDatabase.cs" />
+    <Compile Include="Domain\Enum\MuscleGroups.cs" />
     <Compile Include="Domain\NewUser.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="Domain\UserType.cs" />
@@ -148,6 +149,8 @@
   <ItemGroup>
     <Content Include="Content\Bleaky\Images\background.jpg" />
     <Content Include="Content\Bleaky\Images\muscles.svg" />
+    <Content Include="Content\Bleaky\Images\musclesBackBlue.png" />
+    <Content Include="Content\Bleaky\Images\musclesFrontGreen.png" />
     <Content Include="Content\Bootstrap\css\bootstrap.css" />
     <Content Include="Content\Bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\Bootstrap\js\bootstrap.js" />
